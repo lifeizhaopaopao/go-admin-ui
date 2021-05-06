@@ -80,7 +80,8 @@
                   icon="el-icon-plus"
                   size="mini"
                   @click="handleAdd"
-                >新增</el-button>
+                >新增
+                </el-button>
               </el-col>
               <el-col :span="1.5">
                 <el-button
@@ -90,7 +91,8 @@
                   size="mini"
                   :disabled="single"
                   @click="handleUpdate"
-                >修改</el-button>
+                >修改
+                </el-button>
               </el-col>
               <el-col :span="1.5">
                 <el-button
@@ -100,7 +102,8 @@
                   size="mini"
                   :disabled="multiple"
                   @click="handleDelete"
-                >删除</el-button>
+                >删除
+                </el-button>
               </el-col>
             </el-row>
 
@@ -143,7 +146,8 @@
                     type="text"
                     icon="el-icon-edit"
                     @click="handleUpdate(scope.row)"
-                  >修改</el-button>
+                  >修改
+                  </el-button>
                   <el-button
                     v-if="scope.row.userId !== 1"
                     v-permisaction="['system:sysuser:remove']"
@@ -151,14 +155,16 @@
                     type="text"
                     icon="el-icon-delete"
                     @click="handleDelete(scope.row)"
-                  >删除</el-button>
+                  >删除
+                  </el-button>
                   <el-button
                     v-permisaction="['system:sysuser:resetPassword']"
                     size="mini"
                     type="text"
                     icon="el-icon-key"
                     @click="handleResetPwd(scope.row)"
-                  >重置</el-button>
+                  >重置
+                  </el-button>
                 </template>
               </el-table-column>
             </el-table>
@@ -230,7 +236,8 @@
                     v-for="dict in statusOptions"
                     :key="dict.dictValue"
                     :label="dict.dictValue"
-                  >{{ dict.dictLabel }}</el-radio>
+                  >{{ dict.dictLabel }}
+                  </el-radio>
                 </el-radio-group>
               </el-form-item>
             </el-col>
@@ -293,7 +300,8 @@
             <em>点击上传</em>
           </div>
           <div slot="tip" class="el-upload__tip">
-            <el-checkbox v-model="upload.updateSupport" />是否更新已经存在的用户数据
+            <el-checkbox v-model="upload.updateSupport" />
+            是否更新已经存在的用户数据
             <el-link type="info" style="font-size:12px" @click="importTemplate">下载模板</el-link>
           </div>
           <div slot="tip" class="el-upload__tip" style="color:red">提示：仅允许导入“xls”或“xlsx”格式文件！</div>
@@ -308,7 +316,17 @@
 </template>
 
 <script>
-import { listUser, getUser, delUser, addUser, updateUser, exportUser, resetUserPwd, changeUserStatus, importTemplate } from '@/api/system/sysuser'
+import {
+  listUser,
+  getUser,
+  delUser,
+  addUser,
+  updateUser,
+  exportUser,
+  resetUserPwd,
+  changeUserStatus,
+  importTemplate
+} from '@/api/system/sysuser'
 import { getToken } from '@/utils/auth'
 import { treeselect } from '@/api/system/dept'
 import Treeselect from '@riophae/vue-treeselect'
@@ -585,7 +603,8 @@ export default {
             this.msgError(response.msg)
           }
         })
-      }).catch(() => {})
+      }).catch(() => {
+      })
     },
     /** 提交按钮 */
     submitForm: function() {
@@ -627,7 +646,8 @@ export default {
       }).then(() => {
         this.getList()
         this.msgSuccess('删除成功')
-      }).catch(function() {})
+      }).catch(function() {
+      })
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -640,7 +660,8 @@ export default {
         return exportUser(queryParams)
       }).then(response => {
         this.download(response.msg)
-      }).catch(function() {})
+      }).catch(function() {
+      })
     },
     /** 导入按钮操作 */
     handleImport() {
